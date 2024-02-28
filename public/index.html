@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Low Cost Spirometry Device</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="data-container"></div>
+    <div class="data-item">
+        <h2>Low Cost Spirometry Device</h2>
+        <h4>BME 300 | Group - 12</h4>
+    </div>
+    <div id="data">
+        <div class="carier">
+            <h2 id="fvc"></h2>
+            <p>Forced Vital Capacity (FVC)</p>
+        </div>
+        <div class="carier">
+            <h2 id="fev1"></h2>
+            <p>Forced Expiratory Volume in 1 second (FEV1)</p>
+        </div>
+        <div class="carier">
+            <h2 id="pfrate"></h2>
+            <p>Peak Flow Rate</p>
+        </div>
+        <div class="carier">
+            <h2 id="ratio"></h2>
+            <p>FEV1/FVC Ratio</p>
+        </div>  
+    </div>
+    <br>
+    <div id="main">
+        <div class="plot">
+            <canvas id="fvtime" width="40px" height="40px"></canvas>
+        </div>
+        <br>
+        <div class="plot">
+            <canvas id="fvfvc" width="40px" height="40px"></canvas>
+        </div>
+        <br>
+        <div class="plot">
+            <canvas id="fvcvtime" width="40px" height="40px"></canvas>
+        </div>
+        <br>
+    </div>
+    <table id="flowtable">
+        <!-- Object content will be inserted here -->
+        <tr>
+            <th>SL</th>
+            <th>Voltage</th>
+            <th>Flow Rate</th>
+            <th>Time (mili)</th>
+        </tr>
+    </table>
+
+
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+    <script src="app.js" type="module"></script>
+</body>
+
+</html>
