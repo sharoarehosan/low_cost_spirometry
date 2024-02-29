@@ -1,72 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Low Cost Spirometry Device</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
 
-<body>
+  <body>
     <div id="data-container"></div>
-    <div class="data-item">
-        <h2>Low Cost Spirometry Device</h2>
-        <h4>BME 300 | Group - 12</h4>
+    <div
+      class="flex lg:justify-between px-5 gap-x-4 justify-around lg:px-10 py-4 items-center"
+    >
+      <h2 class="font-semibold text-sky-600 text-xl lg:text-2xl">
+        Low Cost Spirometry Device
+      </h2>
+      <h4 class="text-xs lg:text-md font-semibold">BME 300 | Group - 12</h4>
     </div>
-    <div id="data">
-        <div class="carier">
-            <h2 id="fvc"></h2>
-            <p>Forced Vital Capacity (FVC)</p>
+    <div class="flex lg:flex-row flex-col items-center mx-5 lg:mx-20 mt-10">
+      <div>
+        <div class="text-5xl lg:text-6xl text-gray-900 font-bold leading-24">
+          Diagnosis has never been this affordable.
         </div>
-        <div class="carier">
-            <h2 id="fev1"></h2>
-            <p>Forced Expiratory Volume in 1 second (FEV1)</p>
+        <div class="text-gray-800 text-lg mt-5">
+          Spirometry is a key medical test for assessing lung function. It
+          measures how much air you can inhale, exhale, and how quickly you can
+          do so. This test helps diagnose and monitor conditions like asthma,
+          COPD, and other lung diseases. With its simplicity and accuracy,
+          spirometry is essential in guiding treatment and improving respiratory
+          health.
         </div>
-        <div class="carier">
-            <h2 id="pfrate"></h2>
-            <p>Peak Flow Rate</p>
-        </div>
-        <div class="carier">
-            <h2 id="ratio"></h2>
-            <p>FEV1/FVC Ratio</p>
-        </div>  
-        <div class="carier">
-            <h2 id="predicted">Good</h2>
-            <p id="prediction">System Prediction</p>
-        </div>  
+      </div>
+      <img class="w-full lg:w-1/2" src="/static/test.svg" />
     </div>
-    <br>
-    <div id="main">
-        <div class="plot">
-            <canvas id="fvtime" width="100%" height="70px"></canvas>
-        </div>
-        <br>
-        <div class="plot">
-            <canvas id="fvfvc" width="100%" height="70px"></canvas>
-        </div>
-        <br>
-        <div class="plot">
-            <canvas id="fvcvtime" width="100%" height="70px"></canvas>
-        </div>
-        <br>
+    <div
+      id="data"
+      class="grid grid-cols-1 lg:grid-cols-4 gap-4 lg:mt-20 mx-14 mt-10 lg:mx-20"
+    >
+      <div class="px-10 py-6 border border-sky-600 rounded-lg">
+        <h2 id="fvc" class="text-sky-600 text-4xl mb-4 font-semibold"></h2>
+        <p class="font-semibold text-gray-800">Forced Vital Capacity (FVC)</p>
+      </div>
+      <div class="px-10 py-6 border border-sky-600 rounded-lg">
+        <h2 id="fev1" class="text-sky-600 text-4xl mb-4 font-semibold"></h2>
+        <p class="font-semibold text-gray-800">
+          Forced Expiratory Volume in 1 second (FEV1)
+        </p>
+      </div>
+      <div class="px-10 py-6 border border-sky-600 rounded-lg">
+        <h2 id="pfrate" class="text-sky-600 text-4xl mb-4 font-semibold"></h2>
+        <p class="font-semibold text-gray-800">Peak Flow Rate</p>
+      </div>
+      <div class="px-10 py-6 border border-sky-600 rounded-lg">
+        <h2 id="ratio" class="text-sky-600 text-4xl mb-4 font-semibold"></h2>
+        <p class="font-semibold text-gray-800">FEV1/FVC Ratio</p>
+      </div>
+      <div class="px-10 py-8 border border-sky-600 rounded-lg">
+        <h2 id="predicted" class="text-sky-600 text-4xl mb-4 font-semibold">
+          Good
+        </h2>
+        <p id="prediction" class="font-semibold text-gray-800">
+          System Prediction
+        </p>
+      </div>
     </div>
-    <table id="flowtable">
-        <!-- Object content will be inserted here -->
-        <tr>
-            <th>SL</th>
-            <th>Voltage</th>
-            <th>Flow Rate</th>
-            <th>Time (mili)</th>
-        </tr>
+    <br />
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:mx-20 mx-10 mt-20">
+      <div class="plot ring-[1px] ring-sky-600 ring-offset-8 rounded-lg">
+        <canvas id="fvtime" width="100%" height="70px"></canvas>
+      </div>
+
+      <div
+        class="plot mt-6 lg:mt-0 ring-[1px] ring-sky-600 ring-offset-8 rounded-lg"
+      >
+        <canvas id="fvfvc" width="100%" height="70px"></canvas>
+      </div>
+
+      <div
+        class="plot mt-6 lg:mt-0 ring-[1px] ring-sky-600 ring-offset-8 rounded-lg"
+      >
+        <canvas id="fvcvtime" width="100%" height="70px"></canvas>
+      </div>
+    </div>
+    <table class="mt-20" id="flowtable">
+      <!-- Object content will be inserted here -->
+      <tr>
+        <th>SL</th>
+        <th>Voltage</th>
+        <th>Flow Rate</th>
+        <th>Time (mili)</th>
+      </tr>
     </table>
-
-
 
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
     <script src="app.js" type="module"></script>
-</body>
-
+    <script src="https://cdn.tailwindcss.com"></script>
+  </body>
 </html>
